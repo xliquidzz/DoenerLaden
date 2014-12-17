@@ -1,26 +1,32 @@
 package ch.app.model;
 
-import ch.app.model.concrete.Fladen;
-import ch.app.model.decorator.concrete.Cocktail;
-import ch.app.model.decorator.concrete.Pommes;
+import ch.app.model.factory.SpeiseFactory;
 
-public abstract class Doener {
+public abstract class Doener implements Speise {
 
 	private String beschreibung = " Doener";
-	
+
 	public String getBeschreibung() {
 		return beschreibung;
 	};
-	
+
 	public abstract double preis();
 
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
-	
+
 	public static void main(String[] args) {
-		Doener doener = new Pommes(new Cocktail(new Fladen()));;
-		
-		System.out.println("Ihr " + doener.getBeschreibung() + " Preis: " + doener.preis() 	+ "Fr." );
+		Speise speise = SpeiseFactory.erstelleSpeise("doener fladen");
+
+		System.out.println("Ihr: " + speise.getBeschreibung() + " Preis: "
+				+ speise.preis() + "Fr.");
+
+		Speise speise1 = SpeiseFactory.erstelleSpeise("doener taschen");
+
+		System.out.println("Hier bitte Ihr: " + speise1.getBeschreibung() + " Das macht "
+				+ speise1.preis() + "Fr. Vielen Dank!");
 	}
+	
+	
 }

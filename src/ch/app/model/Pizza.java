@@ -1,6 +1,6 @@
 package ch.app.model;
 
-public abstract class Pizza {
+public abstract class Pizza implements Speise{
 	private String beschreibung = "Pizza";
 	
 	public String getBeschreibung() {
